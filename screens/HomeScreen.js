@@ -14,6 +14,7 @@ const HomeScreen= props =>{
 
     return <View style={styles.home}>        
         <Text>the text title:</Text>
+        {/* yo tala ko card ma kasari tyo array data lai .map use garera dekhaone??*/}
             <Card style={styles.card} onPress={()=> props.navigation.navigate('Post')}>
                 <Card.Title title="titile" subtitle="Published By" />
                 <Card.Content>

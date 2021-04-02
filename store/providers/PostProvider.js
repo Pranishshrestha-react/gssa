@@ -45,6 +45,7 @@ class PostProvider extends React.Component{
             console.log ('addpost', error)
         }
     }
+    /**yo tala ko maile data haru database bata tanera array ma banaye hai aba yo tala ko lai kasari HomeScreen ma gayera dekhaone sabai array tyo card banako ma?? */
     showPostWithFirebase = async() => {
         const allPosts = await axios.get(`${BASE_URL}/posts.json`);
         const userIds = Object.keys(allPosts.data);
