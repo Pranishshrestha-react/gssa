@@ -7,17 +7,11 @@ import TodoContext from '../store/contexts/TodoContext';
 const AddTodo= props =>{
     const [data, setData] = React.useState('');
     const [todoTitle, setTodoTitle] = React.useState('');
-    const [todoDescription, setTodoDescription] = React.useState('');
+    const [todoDescription, setTodoDescription] = React.useState(''); 
     const todoContext = React.useContext(TodoContext);
-    React.useEffect(()=> {
-        const todoRes = todoContext.pullTodoFromFirebase();
-        //setData(todoRes.data);
-        console.log('did', todoRes)
-    },[]
-    )
-   //console.log('homescreen',data)
+    
     const todoSubmit = () => {
-        todoContext.addTodoToFirebase({todoTitle, todoDescription})
+        todoContext.addTodoToFirebase({todoTitle, todoDescription, userId:"1234"})
        
         props.navigation.navigate("AllTodo")
     }

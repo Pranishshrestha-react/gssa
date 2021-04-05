@@ -35,12 +35,21 @@ class TodoProvider extends React.Component{
         try{
             const todoRes = await axios.get(`${BASE_URL}/todos.json`);
             const todosKeys = Object.keys(todoRes.data)
-            const todos = todosKeys.map(todoKey => {
+           // return todoRes.data
+            const todosValues = Object.values(todoRes.data)
+            const formattedTodos = todosKeys.map((key,i)=> {
+                return {
+                    id: key,
+                    ...todosValues[i]
+                }
+            })
+            return formattedTodos
+            /**const todos = todosKeys.map(todoKey => {
                 return{
                     ...todoRes.data[todoKey],
                     id: todoKey
                 }
-            })
+            })**/
             //console.log('new', todos)
         } catch(error){
             console.log('todoarray', error)
