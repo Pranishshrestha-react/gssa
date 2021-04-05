@@ -6,7 +6,7 @@ const EditPostScreen= props =>{
     const[title, setTitle] = React.useState('');
     const[description, setDescription] = React.useState('');
 
-    return <View style={{flex:1, paddingHorizontal: 15}}>
+    return <View style={{flex:1, paddingHorizontal: 15,backgroundColor:'#9f9fa0'}}>
         <Text style={{color:'#0F1113',fontFamily:'Ubuntu-Bold', fontSize:32, paddingBottom: 20, paddingLeft: 50}}>Fill the Boxes </Text>
         <ScrollView showsHorizontalScrollIndicator={false}>
         <TextInput

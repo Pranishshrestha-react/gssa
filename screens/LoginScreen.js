@@ -9,7 +9,8 @@ const LoginScreen= props =>{
 
     const authContext = useContext(AuthContext);
 
-    return <View style={styles.login}>
+    return <View style={styles.home}>
+        <View style={styles.login}>
        <TextInput
        style={styles.textinput}
        mode="outlined"
@@ -17,6 +18,7 @@ const LoginScreen= props =>{
        value={email}
        onChangeText={text => setEmail(text)}
        keyboardType='email-address'
+       
        />
        <TextInput
        style={styles.textinput}
@@ -34,17 +36,23 @@ const LoginScreen= props =>{
        <Button mode="contained" color="#0F1113" onPress={()=> authContext.loginUserWithFirebase(email, password)}>Login</Button>
 
     </View>
+    </View>
 
 }
  
 const styles = StyleSheet.create({
+    home:{
+        flex:1,
+        backgroundColor:'#9f9fa0',
+    },
     login:{
         marginHorizontal: 20,
-        marginVertical: 30,
+        marginVertical: 10,
+        backgroundColor:'#9f9fa0',
         
     },
     textinput:{
-        paddingBottom: 20,
+        paddingBottom: 5,
         fontFamily: 'Ubuntu-Regular',
         
     },

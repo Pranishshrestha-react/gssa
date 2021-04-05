@@ -11,6 +11,7 @@ import AuthContext from './store/contexts/AuthContext';
 import SplashScreen from './screens/splash';
 import MainTabNavigator from './navigation/mainNavigation';
 import PostProvider from './store/providers/PostProvider';
+import TodoProvider from './store/providers/TodoProvider';
 
 
 
@@ -20,6 +21,7 @@ const App = () => {
   return (
     <AuthProvider>
       <PostProvider>
+        <TodoProvider>
       <PaperProvider>
         <NavigationContainer>
          <AuthContext.Consumer>
@@ -34,6 +36,7 @@ const App = () => {
          </AuthContext.Consumer>
         </NavigationContainer>
       </PaperProvider>
+      </TodoProvider>
       </PostProvider>
     </AuthProvider>
   )

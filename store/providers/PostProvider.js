@@ -7,7 +7,8 @@ const BASE_URL ="https://gssa-a7f27-default-rtdb.firebaseio.com";
 
 class PostProvider extends React.Component{
     state = {
-        post:{},    
+        post:{},  
+        showPost:{},  
     }
 
     setPost =(post) => {

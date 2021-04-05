@@ -6,6 +6,7 @@ import AuthContext from '../store/contexts/AuthContext';
 const SignUpScreen= props =>{
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+    const [conpassword, setConpassword] = React.useState('');
     const [fullName, setFullName] = React.useState('');
     const authContext = useContext(AuthContext);
     const handleSignup=() => {
@@ -13,13 +14,16 @@ const SignUpScreen= props =>{
         props.navigation.navigate('Login')
     }
 
-    return <View style={styles.login}>
+    return <View style={styles.home}>
+        <View style={styles.login}>
         <TextInput
         style={styles.textinput}
         mode="outlined"
         label="Full Name"
         value={fullName}
         onChangeText={text=> setFullName(text)}
+        right={<TextInput.Icon name="account-child-circle" />}
+        autoCapitalize="words"
         />
        <TextInput
        style={styles.textinput}
@@ -28,6 +32,7 @@ const SignUpScreen= props =>{
        value={email}
        onChangeText={text => setEmail(text)}
        keyboardType='email-address'
+       right={<TextInput.Icon name="mail" />}
        />
        <TextInput
        style={styles.textinput}
@@ -36,7 +41,16 @@ const SignUpScreen= props =>{
        value={password}
        onChangeText={text => setPassword(text)}
        secureTextEntry={true}
-       
+       right={<TextInput.Icon name="eye-off" />}
+       />
+       <TextInput
+       style={styles.textinput}
+       label="Confirm Password"
+       mode="outlined"
+       value={conpassword}
+       onChangeText={text => setConpassword(text)}
+       secureTextEntry={true}
+       right={<TextInput.Icon name="eye-off" />}
        />
        <View style={styles.shorttext}>
         <Text style={styles.textinput}>Already Registered?</Text>
@@ -46,17 +60,23 @@ const SignUpScreen= props =>{
 
 
     </View>
+    </View>
 
 }
  
 const styles = StyleSheet.create({
+    home:{
+        flex:1,
+        backgroundColor:'#9f9fa0',
+    },
     login:{
         marginHorizontal: 20,
-        marginVertical: 30,
+        marginVertical: 10,
+        backgroundColor:'#9f9fa0',
         
     },
     textinput:{
-        paddingBottom: 20,
+        paddingBottom: 5,
         fontFamily: 'Ubuntu-Regular',
         
     },

@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: 10,
         paddingHorizontal: 18,
+        backgroundColor:'#9f9fa0',
 
     },
     textinput:{
@@ -40,6 +41,9 @@ const styles = StyleSheet.create({
     },
     card:{
         marginBottom: 10,
+        backgroundColor:'#cfcfcf',
+        borderBottomRightRadius:50,
+        borderTopLeftRadius: 50,
     }
 });
 

@@ -1,12 +1,21 @@
-import React , {useContext} from 'react';
+import axios from 'axios';
+import React , {useContext, useEffect, useState } from 'react';
 import {View, StyleSheet, Text, ScrollView} from 'react-native';
 import { Divider, Avatar, List, Button } from 'react-native-paper';
 import AuthContext from '../store/contexts/AuthContext';
-
+const BASE_URL ="https://gssa-a7f27-default-rtdb.firebaseio.com";
 
 const ProfileScreen= props =>{
     const authContext = useContext(AuthContext);
-    return( <View style={{flex:1, }}>
+    const [mainUser, setMainUser] = useState('');
+    useEffect(async ()=> {
+        const response = await axios.get(`${BASE_URL}/users.json`)
+        const users= response.data;
+        setMainUser(users);
+        
+    },[])
+    return( <View style={styles.home}>
+            <View style={styles.curve}></View>
             <Avatar.Image size={100} style={styles.avatar} source={require('../assets/download.png')}  />
             
             <Button icon="earth-plus" color='#0F1113' style={styles.list} onPress={() => console.log('Pressed')} labelStyle={{fontSize: 29}}>   
@@ -15,12 +24,11 @@ const ProfileScreen= props =>{
             <Divider style={styles.divider}/>
             <ScrollView>
                 <List.Item
-                    title={authContext.authUser.fullName}
-                    email={authContext.authUser.email}
+                    title={mainUser.fullName}
                     left={props => <List.Icon {...props} icon="human-male" />}
                 />
                 <List.Item
-                    title="First Item"
+                    title={authContext.authUser.email}
                     description="Item description"
                     right={props => <List.Icon {...props} icon="folder" />}
                 />
@@ -67,6 +75,19 @@ const ProfileScreen= props =>{
 }
  
 const styles = StyleSheet.create({
+    home:{
+        flex:1,
+        backgroundColor:'#9f9fa0',
+    },
+    curve:{
+        height: 70,
+        width:'100%',
+        backgroundColor:'#0f1113',
+        position:'absolute',
+        borderBottomRightRadius: 100,
+        borderBottomLeftRadius: 100,
+
+    },
     avatar:{
         width:'100%',
         alignItems:'center', 
