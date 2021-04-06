@@ -8,9 +8,13 @@ const SignUpScreen= props =>{
     const [password, setPassword] = React.useState('');
     const [conpassword, setConpassword] = React.useState('');
     const [fullName, setFullName] = React.useState('');
+    const [dob, setDob] = React.useState('');
+    const [phone, setPhone] = React.useState('');
+    const [gitLink, setGitLink] = React.useState('');
+    const [address, setAddress] = React.useState('');
     const authContext = useContext(AuthContext);
     const handleSignup=() => {
-        authContext.signUpUserWithFirebase({email, password, fullName})
+        authContext.signUpUserWithFirebase({email, password,conpassword, fullName, dob, phone, gitLink, address})
         props.navigation.navigate('Login')
     }
 

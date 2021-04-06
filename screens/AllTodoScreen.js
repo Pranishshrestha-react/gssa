@@ -12,15 +12,15 @@ const AllTodoScreen = props => {
   React.useEffect(async () => {
     const fetchedTodos = await todoContext.pullTodoFromFirebase();
     //const myList = Object.values(fetchedTodos)
-    console.log('mylist')
+
     setMyTodos(fetchedTodos)
    // setMyTodos(Object.keys(todoId => fetchedTodos[todoId]));
 
-  },[] );
+  },[]);
 
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
   return (
-      <View style={{flex: 1, backgroundColor: '#9f9fa0', paddingHorizontal: 18}}>
+     {/* <View style={{flex: 1, backgroundColor: '#9f9fa0', paddingHorizontal: 18}}>
         <FlatList>
           {myTodos.map(todo => {
               return <View style={styles.bodyTodo}>
@@ -36,7 +36,7 @@ const AllTodoScreen = props => {
                     />
                 </View>
           })}
-          </FlatList>
+          </FlatList>*/},
        
       {/*<ScrollView>
         <View style={styles.bodyTodo}>
@@ -55,11 +55,11 @@ const AllTodoScreen = props => {
         </View>
 
         
-        </ScrollView>*/}
-        <ScrollView>
+        </ScrollView>*/},
+        <ScrollView showsVerticalScrollIndicator={false}>
         {myTodos.map(todo => {
-              return <View style={styles.bodyTodo}>
-              <View>
+              return <View style={styles.bodyTodo} key={todo.id}>
+              <View >
                   <Text style={{fontSize: 20}}>{todo.todoTitle}</Text>
                   <Text style={{color: '#575859', width: 250}}>{todo.todoDescription}</Text>
               </View>
@@ -74,7 +74,7 @@ const AllTodoScreen = props => {
         </ScrollView>
 
 
-    </View>
+    //</View>
     
   );
 };

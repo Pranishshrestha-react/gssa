@@ -9,16 +9,16 @@ const ProfileScreen= props =>{
     const authContext = useContext(AuthContext);
     const [mainUser, setMainUser] = useState('');
     useEffect(async ()=> {
-        const response = await axios.get(`${BASE_URL}/users.json`)
-        const users= response.data;
+        const users = await authContext.authUser
+        //const users= response.data;
         setMainUser(users);
         
-    },[])
+    })
     return( <View style={styles.home}>
             <View style={styles.curve}></View>
             <Avatar.Image size={100} style={styles.avatar} source={require('../assets/download.png')}  />
             
-            <Button icon="earth-plus" color='#0F1113' style={styles.list} onPress={() => console.log('Pressed')} labelStyle={{fontSize: 29}}>   
+            <Button icon="earth-plus" color='#0F1113' style={styles.list} onPress={() => props.navigation.navigate('EditProfile')} labelStyle={{fontSize: 29}}>   
             </Button>
 
             <Divider style={styles.divider}/>
@@ -28,12 +28,12 @@ const ProfileScreen= props =>{
                     left={props => <List.Icon {...props} icon="human-male" />}
                 />
                 <List.Item
-                    title={authContext.authUser.email}
+                    title={mainUser.email}
                     description="Item description"
                     right={props => <List.Icon {...props} icon="folder" />}
                 />
                 <List.Item
-                    title="First Item"
+                    title={mainUser.password}
                     description="Item description"
                     right={props => <List.Icon {...props} icon="folder" />}
                 />

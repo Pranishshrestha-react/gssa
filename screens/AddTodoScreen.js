@@ -11,7 +11,7 @@ const AddTodo= props =>{
     const todoContext = React.useContext(TodoContext);
     
     const todoSubmit = () => {
-        todoContext.addTodoToFirebase({todoTitle, todoDescription, userId:"1234"})
+        todoContext.addTodoToFirebase({todoTitle, todoDescription /**userId:"1234" **/})
        
         props.navigation.navigate("AllTodo")
     }

@@ -50,6 +50,16 @@ class AuthProvider extends React.Component{
         }
     }
 
+    updateUserWithFirebase = async(user) =>{
+        try{
+            const userRes = await AsyncStorage.getItem('authenticated')
+            const finRes = JSON.parse(userRes);
+            const updateUser = await axios.patch(`${BASE_URL}/users/${finRes.id}.json`, user)
+        } catch(error) {
+            console.log('update', error)
+        }
+    }
+
     /**addPostWithFirebase = async(post) => {
         try{
             const userRes= await AsyncStorage.getItem('authenticated')
@@ -213,6 +223,7 @@ class AuthProvider extends React.Component{
                 loginUserWithFirebase: this.loginUserWithFirebase,
                 addPostWithFirebase: this.addPostWithFirebase,
                 showPostWithFirebase: this.showPostWithFirebase,
+                updateUserWithFirebase: this.updateUserWithFirebase,
             }}>
                 {this.props.children} 
             </AuthContext.Provider>

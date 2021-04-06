@@ -11,6 +11,7 @@ import AddPostScreen from '../screens/AddPostScreen';
 import MyPostScreen from '../screens/MyPostScreen';
 import EditPostScreen from '../screens/EditPostScreen';
 import AddTodo from '../screens/AddTodoScreen';
+import EditProfile from '../screens/EditProfileScreen';
 
 const Logo =() => {
     return <Image source={require('../assets/logo.png')} style={{height: 50, width: 50}}/>
@@ -87,6 +88,7 @@ const ProfileStackNavigator =() => {
                 <Icon name="cut" size={32} color='#cfcfcf' onPress = {()=> navigation.navigate('EditPost')}/>
             )
         })}/>
+        <ProfileStack.Screen name="EditProfile" component={EditProfile}/>
         <ProfileStack.Screen name="EditPost" component={EditPostScreen}/>
         <ProfileStack.Screen name="Post" component = { PostScreen}/>
     </ProfileStack.Navigator>
